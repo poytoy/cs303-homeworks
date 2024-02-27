@@ -1,0 +1,76 @@
+module CLA_16bit_tb();
+
+reg  [15:0]         A, B; // Inputs
+reg                 mode;  // mode (add or subtract)
+wire [15:0]         S; // result
+wire                Ovf;   // Outputs are wires.
+wire                Cout;
+
+CLA_add_sub dut (.A(A), .B(B), .Mode(mode), .S(S), .Cout(Cout), .OVF(Ovf)); // Our design-under-test.
+
+initial begin
+    //  * Our waveform is saved under this file.
+    
+    $dumpfile("CLA_16bit_top.vcd"); 
+    
+    // * Get the variables from the module.
+
+    $dumpvars(0,CLA_16bit_tb);
+
+    $display("Simulation started.");
+
+    A = 16'd0;  // Set all inputs to zero.
+    B = 16'd0;
+    mode = 1'd0;
+    #10;     // Wait 10 time units.
+    A = 16'd25;  
+    B = 16'd50;
+    mode = 1'd0; // For addition
+    #10;     // Wait 10 time units.
+    A = 16'd30;  
+    B = 16'd100;
+    mode = 1'd1; // For subtraction
+    #10;     // Wait 10 time units.
+
+    A = 16'd2; // normal
+    B = 16'd1;
+    mode = 1'd0; // Addition
+    #10;
+    A = 16'd24576;//ovf
+    B = 16'd24576;
+    mode = 1'd0; // Addition
+    #10;
+    // cout
+    A = 16'd57344;
+    B = 16'd57344;
+    mode = 1'd0; // Addition
+    #10;
+    // cout & OVF
+    A = 16'd45056;
+    B = 16'd36864;
+    mode = 1'd0; // Addition
+    #10;
+
+     //ovf
+    A = 16'd0;
+    B = 16'd32768;
+    mode = 1'd1; // subtraction
+    #10;
+    A = 16'd32768; // cout 
+    B = 16'd32768;
+    mode = 1'd1; // Subtraction
+    #10;
+    A = 16'd57344;//overflow and count
+    B = 16'd28672;
+    mode = 1'd1; // Subtraction
+    #10;
+    //normal
+    A = 16'd1;
+    B = 16'd2;
+    mode = 1'd1; // Subtraction
+    #10;
+    $display("Simulation finished.");
+    $finish(); // Finish simulation.
+end
+
+endmodule

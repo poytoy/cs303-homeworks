@@ -1,0 +1,338 @@
+$date
+	Tue Dec 19 22:45:33 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module DigiHockey_tb $end
+$var wire 3 ! Y_COORD [2:0] $end
+$var wire 3 " X_COORD [2:0] $end
+$var parameter 64 # FP $end
+$var parameter 32 $ HP $end
+$var reg 2 % DIRECTION [1:0] $end
+$var reg 3 & INIT_Y_POS [2:0] $end
+$var reg 1 ' START $end
+$var reg 1 ( clk $end
+$var reg 1 ) rst $end
+$scope module dut $end
+$var wire 2 * DIRECTION [1:0] $end
+$var wire 3 + INIT_Y_POS [2:0] $end
+$var wire 1 ' START $end
+$var wire 1 ( clk $end
+$var wire 1 ) rst $end
+$var reg 3 , X_COORD [2:0] $end
+$var reg 3 - Y_COORD [2:0] $end
+$var reg 1 . increment_x $end
+$var reg 1 / increment_y $end
+$var reg 1 0 started $end
+$var reg 1 1 y_set $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b101 $
+b1010 #
+$end
+#0
+$dumpvars
+x1
+x0
+x/
+x.
+bx -
+bx ,
+b0 +
+b0 *
+0)
+0(
+0'
+b0 &
+b0 %
+bx "
+bx !
+$end
+#5
+1(
+#10
+00
+1.
+b0 !
+b0 -
+b0 "
+b0 ,
+b10 &
+b10 +
+b1 %
+b1 *
+1)
+1(
+#15
+0(
+#20
+1(
+0)
+#25
+0(
+#30
+01
+1/
+10
+1(
+1'
+#35
+0(
+#40
+11
+b10 !
+b10 -
+1(
+#45
+0(
+#50
+b11 !
+b11 -
+b1 "
+b1 ,
+1(
+#55
+0(
+#60
+b100 !
+b100 -
+0/
+b10 "
+b10 ,
+1(
+#65
+0(
+#70
+b11 !
+b11 -
+b11 "
+b11 ,
+1(
+#75
+0(
+#80
+b10 !
+b10 -
+0.
+b100 "
+b100 ,
+1(
+#85
+0(
+#90
+00
+1.
+b1 !
+b1 -
+b11 "
+b11 ,
+1(
+b100 &
+b100 +
+b10 %
+b10 *
+0'
+1)
+#95
+0(
+#100
+1(
+0)
+#105
+0(
+#110
+01
+10
+b0 !
+b0 -
+b0 "
+b0 ,
+1(
+1'
+#115
+0(
+#120
+11
+b100 !
+b100 -
+1(
+#125
+0(
+#130
+b11 !
+b11 -
+b1 "
+b1 ,
+1(
+#135
+0(
+#140
+b10 !
+b10 -
+b10 "
+b10 ,
+1(
+#145
+0(
+#150
+b1 !
+b1 -
+b11 "
+b11 ,
+1(
+#155
+0(
+#160
+b0 !
+b0 -
+1/
+0.
+b100 "
+b100 ,
+1(
+#165
+0(
+#170
+b1 !
+b1 -
+b11 "
+b11 ,
+1(
+#175
+0(
+#180
+b10 !
+b10 -
+b10 "
+b10 ,
+1(
+#185
+0(
+#190
+00
+1.
+b0 !
+b0 -
+b1 "
+b1 ,
+1(
+b0 &
+b0 +
+b0 %
+b0 *
+0'
+1)
+#195
+0(
+#200
+1(
+0)
+#205
+0(
+#210
+01
+0/
+10
+b0 "
+b0 ,
+1(
+1'
+#215
+0(
+#220
+11
+1(
+#225
+0(
+#230
+b1 "
+b1 ,
+1(
+#235
+0(
+#240
+b10 "
+b10 ,
+1(
+#245
+0(
+#250
+b11 "
+b11 ,
+1(
+#255
+0(
+#260
+0.
+b100 "
+b100 ,
+1(
+#265
+0(
+#270
+b11 "
+b11 ,
+1(
+#275
+0(
+#280
+b10 "
+b10 ,
+1(
+#285
+0(
+#290
+b1 "
+b1 ,
+1(
+#295
+0(
+#300
+b0 "
+b0 ,
+1.
+1(
+#305
+0(
+#310
+b1 "
+b1 ,
+1(
+#315
+0(
+#320
+b10 "
+b10 ,
+1(
+#325
+0(
+#330
+b11 "
+b11 ,
+1(
+#335
+0(
+#340
+0.
+b100 "
+b100 ,
+1(
+#345
+0(
+#350
+b11 "
+b11 ,
+1(
+#355
+0(
+#360
+b10 "
+b10 ,
+1(

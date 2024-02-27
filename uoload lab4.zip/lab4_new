@@ -1,0 +1,112 @@
+module up_down_counter_x(
+    input clk,
+    input reset,
+    output reg [2:0] counter
+
+);
+
+reg [2:0] counter_up_down;
+reg increment;  // New variable to determine direction
+
+// down counter
+always @(posedge clk or posedge reset) begin
+    if (reset) begin
+        counter_up_down <= 3'h0;
+        increment <= 1'b1;  // Initialize to increment
+    end else begin
+        if (counter_up_down < 3'h4) begin
+            if (increment)
+                counter_up_down <= counter_up_down + 3'd1;
+            else
+                counter_up_down <= counter_up_down - 3'd1;
+        end
+        // Change direction when reaching 4 or 0
+        if (counter_up_down == 3'h4 || counter_up_down == 3'h0)
+            increment <= ~increment;
+    end 
+end
+
+assign counter = counter_up_down;
+
+endmodule
+
+module up_down_counter_y(
+    input clk,
+    input [2:0] INIT_Y_POS,
+    input reset,
+    input [1:0] DIRECTION,
+    output reg [2:0] counter
+);
+
+reg [3:0] counter_up_down;
+reg increment;
+
+// down counter
+always @(posedge clk or posedge reset) begin
+    counter_up_down = INIT_Y_POS;
+    if (reset) begin
+        counter_up_down <= 3'h0;
+        if (DIRECTION == 2'b01)
+            increment <= 1'b1;  // Initialize to increment
+        else if (DIRECTION == 2'b10)
+            increment <= 1'b0;  // Initialize to decrement
+    end
+    if (DIRECTION != 2'b00) begin
+        if (counter_up_down < 3'h4) begin
+            if (increment)
+                counter_up_down <= counter_up_down + 3'd1;
+            else
+                counter_up_down <= counter_up_down - 3'd1;
+        end
+        // Change direction when reaching 4 or 0
+        if (counter_up_down == 3'h4 || counter_up_down == 3'h0)
+            increment <= ~increment;
+    end
+end
+
+assign counter = counter_up_down;
+
+endmodule
+
+module DigiHockey(
+    input clk,
+    input rst,
+    input START,
+    input [1:0] DIRECTION,
+    input [2:0] INIT_Y_POS,
+    output reg [2:0] X_COORD,
+    output reg [2:0] Y_COORD
+);
+
+// Instantiate up_down_counter_x module
+// Instantiate up_down_counter_x module
+up_down_counter_x udc_x_inst (
+    .clk(clk),
+    .reset(rst),
+    .counter(X_COUNTER_output)  // Connect the output of up_down_counter_x to X_COORD
+);
+
+
+// Instantiate up_down_counter_y module
+up_down_counter_y udc_y_inst (
+    .clk(clk),
+    .INIT_Y_POS(INIT_Y_POS),
+    .reset(rst),
+    .DIRECTION(DIRECTION),
+    .counter(Y_COUNTER_output)  // Connect the output of up_down_counter_y to Y_COORD
+);
+always @(posedge clk or posedge rst) begin
+    if (rst) begin
+        // Reset logic here
+        X_COUNTER_output <= 3'h0;
+        Y_COUNTER_output <= 3'h0;
+    end else if (START) begin
+        // Initialize counters when START is asserted
+        X_COUNTER_output <= 3'h0;
+        Y_COUNTER_output <= INIT_Y_POS;
+    end 
+end
+assign X_COORD = X_COUNTER_output;
+assign Y_COORD = Y_COUNTER_output;
+
+endmodule
